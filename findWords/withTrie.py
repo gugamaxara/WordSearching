@@ -1,10 +1,12 @@
 import time
 
+#Create a TrieNode class for Trie
 class TrieNode:
     def __init__(self):
         self.children = [None] * 26
         self.isEndOfWord = False
 
+#Create Trie class
 class Trie:
     def __init__(self):
         self.root = self.getNode()
@@ -36,15 +38,25 @@ class Trie:
         return pCrawl != None and pCrawl.isEndOfWord
 
 
+#Function to solve our problem, which gets N_number of width
+#and height of our matrix, words lists with words, which 
+#we have to find and x _ our matrix
 def findWords(N, words, x):
+    #create a set
     match = set()
 
+    #create instanse of Trie
     t = Trie()
 
+    #Insert all of the words into a trie
     for word in words:
         t.insert(word)
 
-    
+    #for every character of matrix we have to do the same:
+    #Every character in the matrix can be a starting point of word and can have 8 directions
+    #In this 8 directions there can be as many words as there is distance to the and of the matrix from this certain character
+    #We check every possible word starting with the certain character and do it for all the characters and add
+    #if they reside in trie, then we add it to the set. then we return the set
     for i in range(N):
         for j in range(N):
             sum1, sum2, sum3, sum4, sum5, sum6, sum7, sum8 = "", "", "", "", "", "", "", ""
@@ -85,7 +97,7 @@ def findWords(N, words, x):
     # print(match)
     return match
 
-
+#main function were we get input and summon our function
 def main():
 
     N = int(input())
@@ -95,6 +107,7 @@ def main():
     findWords(N, words, x)
 
 
+#check speed of our function
 if __name__ == '__main__':
     start_time = time.time()
     main()
