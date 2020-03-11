@@ -24,10 +24,7 @@
 #       match.append(words[j])
 import time
 
-def main():
-  N = int(input())
-  words = list(input().split(" "))
-  x = [list(input().split(" ")) for y in range(N)]
+def brute_find_words(N,words,x):
   match = set()
 
   for i in range(N):
@@ -62,7 +59,15 @@ def main():
             (sum7 == words[k]) or #marcxena qveda 7
             (sum8 == words[k])):  #marjvena zeda 8
           match.add(words[k])
-  print(match)
+    # print(match)
+  return match
+
+def main():
+  N = int(input())
+  words = list(input().split(" "))
+  x = [list(input().split(" ")) for y in range(N)]
+  match = set()
+  brute_find_words(N,words,x)
 
 if __name__ == '__main__':
     start_time = time.time()
